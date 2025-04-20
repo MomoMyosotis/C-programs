@@ -1,0 +1,9 @@
+#!/bin/bash
+
+jolly="jolly"
+mv "$1" "$jolly"
+mv "$2" "$1"
+mv "jolly" "$2"
+
+echo  "boopie boopie"
+

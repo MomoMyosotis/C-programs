@@ -1,0 +1,21 @@
+#!/bin/bash
+
+read -p "insert value_1: " value1
+read -p "insert value_2: " value2
+read -p "insert operator: " op
+
+echo ""
+echo "first value $value1"
+echo "second value $value2"
+echo "opeartor is $op"
+
+if [ $op == "/" ] && [ $value1 -eq "0" ] || [ $value2 -eq "0" ]
+then
+echo "invalid input."
+echo ""
+exit 1
+else
+result=$(( $value1 $op $value2 ))
+echo ""
+echo "result is: $result"
+fi

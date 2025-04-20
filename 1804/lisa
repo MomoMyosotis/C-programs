@@ -1,0 +1,97 @@
+#!/bin/bash
+read -p "skip dialouge? " check
+if [ $check == "n" ] || [ $check == "no" ] || [ $check == "nope" ]
+then
+	echo "* wakes up *" && sleep 0.2 && printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf "."
+	sleep 2
+	echo ""
+	echo " okay" && sleep 0.2 && printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf ". " && sleep 2 && printf "I'm ready for work"
+	sleep 2
+	echo ""
+	sleep 1
+	read -p "who are you? " user
+	sleep 2
+	echo "$user, huh? " && sleep 1 && printf "well," && sleep 0.2 && printf " nice to meet you, Darling." && sleep 0.2 && 	printf "I'm..."
+	echo "" & sleep 1 && printf "." && sleep 0.5 && printf "."  && sleep 0.5 && printf "."
+	sleep 1
+	read -p "who am I? " unity
+	sleep 1
+	echo "so" && sleep 0.2 && printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf " I'm $unity"
+	sleep 5
+	printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf "." && printf " at least you've got a bit of taste"
+
+fi
+
+echo ""
+sleep 0.5
+echo "let's get some shit done"
+sleep 0.5
+read -p "which file shuld I look in? " file
+
+if [ -e $file ]
+	# pp -> pattern place
+	# pn -> pattern number
+then
+	sleep 0.5
+	echo "found it!"
+	sleep 1
+	echo "what start of sequence should I look for?"
+	sleep 1
+	echo "hint: ATG"
+		read -p "insert start of pattern: " start
+	sleep 1
+	echo "clever boy"
+	sleep 1
+	echo "what end of sequence should I look for?"
+	sleep 1
+	echo "hint: TGA"
+		read -p "insert end of pattern: " end
+	read -p "what you wanna look for in that sequence? " searched
+	sleep 1
+	echo "such... a clever boy"
+	sleep 1
+		sequence=$( grep -o -E "$start.*$end"  "$file" )
+	if [ -n "$sequence" ]
+	then
+		count=1
+		while IFS= read -r sequence; do
+		if [[ "$sequence" =~ "$searched" ]]; then
+			# Stampa il numero di riga
+			printf "%s: " "$line_number"
+			# Incrementa il contatore delle righe
+			((line_number++))
+			# Stampa la sequenza con il pattern cercato evidenziato
+               			highlighted_sequence=$(echo "$sequence" | sed "s/$searched/$(tput setaf 1)&$(tput sgr0)/g")
+ 			echo "$highlighted_sequence"
+		fi
+		done <<< "$sequence"
+
+	else
+		sleep 1
+		echo "Sorry $user I didn't find the sequence: '$start -$end'"
+	fi
+else
+	sleep 1
+	echo " "
+	printf "Sorry $user," && sleep 1 && printf " I didn't find the file $file"
+fi
+
+echo " "
+read -p "aren't you gonna say 'thank you', at least? " kindness
+
+if [ $kindness == "thanks" ] || [ $kindness == "thank you" ] || [ $kindness == "10x" ]
+then
+	printf "that's a good boy" && sleep 0.2 && printf "." && sleep 0.2 && printf "." && sleep 0.2 && printf "."
+	echo ""
+	printf "you're welcome, darling " && sleep 0.2 && printf "<" && sleep 0.2 && printf "3"
+else
+	echo "rude, ungreatefull asshole" && sleep 0.2 && printf "." && sleep 0.2 && printf "." && printf "."
+fi
+
+echo ""
+sleep 0.2 && printf "."  && sleep 0.2 && printf "."  && sleep 0.2 && printf "."
+sleep 0.1
+echo "." && sleep 0.2 && printf "."  && sleep 0.2 && printf "."
+echo ""
+sleep 0.1
+echo " *goes back to sleeps * "

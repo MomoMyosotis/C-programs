@@ -1,0 +1,4 @@
+#|/bin/bash
+
+echo "Boopie boopie <3"
+ls

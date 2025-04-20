@@ -1,0 +1,48 @@
+#!/bin/bash
+
+read -p "insert value_1: " value1
+read -p "insert value_2: " value2
+read -p "insert desired operation type: " operator
+
+echo ""
+echo "Value 1: $value1"
+echo "Value 2: $value2"
+echo "Operator: $operator"
+echo ""
+echo "keep going?"
+read -p "[y/n]: " check
+
+if [ $check -eq "1" ]
+then
+case $operator in
++) 
+result=$(("$value1 + $value2"))
+;;
+
+-)
+if [ $value1 -gt $value_2 ]; then
+result=$(echo "$value1" - "$value2")
+ else
+result=$(echo "$value2" - "$value1")
+fi
+;;
+
+ *)
+ result=$(echo "$value1" * "$value2")
+;;
+
+/)
+if [ $value1 -eq 0 ] || [ $value2 -eq "0" ]; then
+echo "Impossibile dividere per zero"
+exit 1
+else
+result=$(echo "$value1" / "$value2")
+fi
+;;
+esac
+
+echo "operation result: $result"
+
+else
+echo "operation termianted by user"
+fi

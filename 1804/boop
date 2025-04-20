@@ -1,0 +1,45 @@
+#!/bin/bash
+
+read -p "who are you? " user
+sleep 2
+echo "nice to meet you, im Unity."
+sleep 1
+echo ""
+echo "just a sec..."
+sleep 1
+echo "Oky, I'm ready for work, $user"
+sleep 1
+echo ""
+sleep 0.5
+read -p "which file shuld I look in? " file
+
+if [ -e $file ]
+
+	# pp -> pattern place
+	# pn -> pattern number
+then
+	echo "found it!"
+	read -p "what sequence should I look for? " sequence
+	if grep -q "$sequence" $file 
+	then
+		grep -n "$sequence" $file
+		echo ""
+		read -p "where to save pp and pn, momo? " lemon
+		grep -aob "ATG" "$file" > $lemon
+		echo ""
+		echo " I saved them in -> $lemon"
+		echo "look for it"
+		echo ""
+		grep -aob "ATG" "$file" | grep -c "ATG">> $lemon
+	else
+		echo "Sorry $user I didn't find the sequence: '$sequence'"
+	fi
+else
+	echo "Sorry $user I didn't find the file $file"
+fi
+	sleep 3
+	echo "..."
+	sleep 2
+	echo "... *sleeping peacefully*"
+	sleep 1
+	echo""

@@ -1,0 +1,12 @@
+
+#!/bin/bash
+
+for ((a = 0; a < 2; a++)) do
+echo ""
+echo "nooty nooty"
+
+''$@''
+
+echo "done"
+echo ""
+done

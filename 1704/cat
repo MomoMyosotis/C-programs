@@ -1,0 +1,21 @@
+#!/bin/bash
+
+read -p "insert file name: " file
+
+
+while true
+do
+
+read -p "invalid input insert file name: " file
+if [ -e $file ]
+then
+break
+fi
+done
+echo ""
+echo "well done."
+echo "the file $file is present in the current dir"
+
+cat $file $file > copia
+
+echo "creata la copia di $file"

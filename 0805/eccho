@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for ((a = 0; a < 2; a++)) do
+
+echo ''$1''
+
+done
